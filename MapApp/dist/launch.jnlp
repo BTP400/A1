@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="file:/Users/joshy/projects/articles/mapviewer/MapApp/dist/" href="launch.jnlp">
+    <information>
+        <title>Basic Application Example</title>
+        <vendor>Sun Microsystems, Inc.</vendor>
+        <description>A simple java desktop application based on Swing Application Framework</description>
+        <description kind="short">Basic Application Example</description>
+        <homepage href="http://appframework.dev.java.net"/>
+    </information>
+    <security>
+        <all-permissions/>
+    </security>
+    <resources>
+        <j2se version="1.5+"/>
+        <jar href="MapApp.jar" main="true" download="eager"/>
+    </resources>
+    <application-desc main-class="mapapp.MapApp">
+    </application-desc>
+</jnlp>

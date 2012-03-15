@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:si="http://soapinterop.org/xsd" xmlns:tns="http://www.ippages.com/soap/lookup/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.ippages.com/soap/lookup/"><types><xsd:schema targetNamespace="http://www.ippages.com/soap/lookup/"
+>
+ <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+ <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+ <xsd:complexType name="IP_Address_Lookup_Properties">
+  <xsd:all>
+   <xsd:element name="IP" type="xsd:string"/>
+   <xsd:element name="HOST" type="xsd:string"/>
+   <xsd:element name="COUNTRY" type="xsd:string"/>
+   <xsd:element name="COUNTRY_CODE3" type="xsd:string"/>
+   <xsd:element name="STATE" type="xsd:string"/>
+   <xsd:element name="CITY" type="xsd:string"/>
+   <xsd:element name="ISP" type="xsd:string"/>
+   <xsd:element name="ORG" type="xsd:string"/>
+   <xsd:element name="DATETIME_STAMP" type="xsd:string"/>
+   <xsd:element name="TIMESERVER_STAMP" type="xsd:string"/>
+   <xsd:element name="VERSION" type="xsd:string"/>
+   <xsd:element name="COMMENTS" type="xsd:string"/>
+   <xsd:element name="CURRENCY_CODE" type="xsd:string"/>
+   <xsd:element name="CURRENCY_NAME" type="xsd:string"/>
+   <xsd:element name="CONTINENT" type="xsd:string"/>
+   <xsd:element name="NATIONALITY" type="xsd:string"/>
+   <xsd:element name="AREA_CODE" type="xsd:string"/>
+   <xsd:element name="POSTAL_ZIP_CODE" type="xsd:string"/>
+   <xsd:element name="DMA_CODE" type="xsd:string"/>
+   <xsd:element name="LATITUDE" type="xsd:string"/>
+   <xsd:element name="LONGITUDE" type="xsd:string"/>
+   <xsd:element name="TIMEZONE" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+</xsd:schema>
+</types><message name="showmyip_lookupRequest"><part name="lookup_ip" type="xsd:string" /><part name="lookup_host" type="xsd:string" /><part name="optional_registered_ddns_name" type="xsd:string" /><part name="optional_language_code" type="xsd:string" /><part name="optional_access_key" type="xsd:string" /></message><message name="showmyip_lookupResponse"><part name="return" type="tns:IP_Address_Lookup_Properties" /></message><portType name="showmyip_lookupPortType"><operation name="showmyip_lookup"><input message="tns:showmyip_lookupRequest"/><output message="tns:showmyip_lookupResponse"/></operation></portType><binding name="showmyip_lookupBinding" type="tns:showmyip_lookupPortType"><soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/><operation name="showmyip_lookup"><soap:operation soapAction="http://www.ippages.com/soap/lookupserver.php/showmyip_lookup" style="rpc"/><input><soap:body use="encoded" namespace="http://www.ippages.com/soap/lookup/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input><output><soap:body use="encoded" namespace="http://www.ippages.com/soap/lookup/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output></operation></binding><service name="showmyip_lookup"><port name="showmyip_lookupPort" binding="tns:showmyip_lookupBinding"><soap:address location="http://www.ippages.com/soap/lookupserver.php"/></port></service></definitions>
