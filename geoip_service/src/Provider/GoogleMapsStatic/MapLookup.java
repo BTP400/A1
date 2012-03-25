@@ -100,7 +100,6 @@ public String getURI(double lat, double lon, int sizeW, int sizeH, MapMarker... 
       append("&").
       append(GmapLicenseKey).append("=").append(GmapLicense);
 
-
   return sb.toString();
 }
 
@@ -137,6 +136,7 @@ public String getURI(double lat, double lon, int sizeW, int sizeH, int zoom) {
       append(GmapLicenseKey).append("=").append(GmapLicense);
 
   return sb.toString();
+  //return "http://maps.google.com/?t=m&ie=UTF8&ll=43.548906,-79.735959&spn=0.008647,0.01929&z=16&output=embed";
 }
 
 private void _validateParams(int sizeW, int sizeH, int zoom) {

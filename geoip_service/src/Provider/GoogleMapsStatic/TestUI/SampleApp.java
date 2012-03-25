@@ -14,6 +14,8 @@ import com.jgoodies.forms.factories.*;
 import info.clearthought.layout.*;
 import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.methods.*;
+import java.net.URI;
+import java.awt.Desktop;
 
 import javax.imageio.*;
 import javax.swing.*;
@@ -68,6 +70,15 @@ private void doInit() {
 
   _setupTask();
 }
+
+/*
+private void UriInBrowser(String uri){
+      java.net.URI urii = new java.net.URI( uri );
+      Desktop d = Desktop.getDesktop();
+      d.browse( urii );
+}
+*/
+
 
 /** create a test task and wire it up with a task handler that dumps output to the textarea */
 @SuppressWarnings("unchecked")
@@ -199,26 +210,29 @@ private SwingUIHookAdapter _initHook(SwingUIHookAdapter hook) {
 
 private void _displayImgInFrame() {
 
-  final JFrame frame = new JFrame("Google Static Map");
-  GUIUtils.setAppIcon(frame, "71.png");
-  frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+  //final JFrame frame = new JFrame("Google Static Map");
+  //GUIUtils.setAppIcon(frame, "71.png");
+  //frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
   JLabel imgLbl = new JLabel(new ImageIcon(_img));
   imgLbl.setToolTipText(MessageFormat.format("<html>Image downloaded from URI<br>size: w={0}, h={1}</html>",
                                              _img.getWidth(), _img.getHeight()));
   imgLbl.addMouseListener(new MouseListener() {
     public void mouseClicked(MouseEvent e) {}
-    public void mousePressed(MouseEvent e) { frame.dispose();}
+    public void mousePressed(MouseEvent e) { //frame.dispose();
+        
+    }
     public void mouseReleased(MouseEvent e) { }
     public void mouseEntered(MouseEvent e) { }
     public void mouseExited(MouseEvent e) { }
   });
+  
+  outputPanel.add(imgLbl);
+  //frame.setContentPane(imgLbl);
+  //frame.pack();
 
-  frame.setContentPane(imgLbl);
-  frame.pack();
-
-  GUIUtils.centerOnScreen(frame);
-  frame.setVisible(true);
+  //GUIUtils.centerOnScreen(frame);
+  //frame.setVisible(true);
 }
 
 private void _displayRespStrInFrame() {
@@ -289,6 +303,7 @@ private void initComponents() {
   // Generated using JFormDesigner non-commercial license
   dialogPane = new JPanel();
   contentPanel = new JPanel();
+  outputPanel = new JPanel();
   panel1 = new JPanel();
   label2 = new JLabel();
   ttfSizeW = new JTextField();
@@ -324,9 +339,15 @@ private void initComponents() {
   //======== dialogPane ========
   {
   	dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-  	dialogPane.setOpaque(false);
+        dialogPane.setOpaque(false);
   	dialogPane.setLayout(new BorderLayout());
-
+        
+        //======== contentPanel ========
+        {
+            outputPanel.setOpaque(false);
+            outputPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        }
+        dialogPane.add(outputPanel, BorderLayout.LINE_START);
   	//======== contentPanel ========
   	{
   		contentPanel.setOpaque(false);
@@ -491,7 +512,7 @@ private void initComponents() {
   		}
   		contentPanel.add(panel2, new TableLayoutConstraints(0, 2, 0, 2, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
   	}
-  	dialogPane.add(contentPanel, BorderLayout.CENTER);
+  	dialogPane.add(contentPanel, BorderLayout.LINE_END);
   }
   contentPane.add(dialogPane, BorderLayout.CENTER);
   setSize(675, 485);
@@ -503,6 +524,8 @@ private void initComponents() {
 // Generated using JFormDesigner non-commercial license
 private JPanel dialogPane;
 private JPanel contentPanel;
+private JPanel outputPanel;
+
 private JPanel panel1;
 private JLabel label2;
 private JTextField ttfSizeW;
