@@ -210,9 +210,9 @@ private SwingUIHookAdapter _initHook(SwingUIHookAdapter hook) {
 
 private void _displayImgInFrame() {
 
-  //final JFrame frame = new JFrame("Google Static Map");
-  //GUIUtils.setAppIcon(frame, "71.png");
-  //frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+  final JFrame frame = new JFrame("Google Static Map");
+  GUIUtils.setAppIcon(frame, "71.png");
+  frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
   JLabel imgLbl = new JLabel(new ImageIcon(_img));
   imgLbl.setToolTipText(MessageFormat.format("<html>Image downloaded from URI<br>size: w={0}, h={1}</html>",
@@ -227,12 +227,12 @@ private void _displayImgInFrame() {
     public void mouseExited(MouseEvent e) { }
   });
   
-  outputPanel.add(imgLbl);
-  //frame.setContentPane(imgLbl);
-  //frame.pack();
+  //outputPanel.add(imgLbl);
+  frame.setContentPane(imgLbl);
+  frame.pack();
 
-  //GUIUtils.centerOnScreen(frame);
-  //frame.setVisible(true);
+  GUIUtils.centerOnScreen(frame);
+  frame.setVisible(true);
 }
 
 private void _displayRespStrInFrame() {
@@ -342,12 +342,12 @@ private void initComponents() {
         dialogPane.setOpaque(false);
   	dialogPane.setLayout(new BorderLayout());
         
-        //======== contentPanel ========
-        {
-            outputPanel.setOpaque(false);
-            outputPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        }
-        dialogPane.add(outputPanel, BorderLayout.LINE_START);
+//        //======== contentPanel ========
+//        {
+//            outputPanel.setOpaque(false);
+//            outputPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+//        }
+//        dialogPane.add(outputPanel, BorderLayout.LINE_START);
   	//======== contentPanel ========
   	{
   		contentPanel.setOpaque(false);
@@ -512,7 +512,7 @@ private void initComponents() {
   		}
   		contentPanel.add(panel2, new TableLayoutConstraints(0, 2, 0, 2, TableLayoutConstraints.FULL, TableLayoutConstraints.FULL));
   	}
-  	dialogPane.add(contentPanel, BorderLayout.LINE_END);
+  	dialogPane.add(contentPanel, BorderLayout.CENTER);
   }
   contentPane.add(dialogPane, BorderLayout.CENTER);
   setSize(675, 485);
